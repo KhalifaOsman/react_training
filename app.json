@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "aizen",
+    "slug": "aizen",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "aizen"
+}
