@@ -1,21 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+
+import PeoplePage from "./src/pages/peoplePage";
+import PersonDetailPage from "./src/pages/PersonDetailPage";
+
+const Stack = createStackNavigator();
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    return (
+        <NavigationContainer >
+            <Stack.Navigator screenOptions={options}>
+                <Stack.Screen name="People" component={PeoplePage} />
+                <Stack.Screen name="PersonDetails" component={PersonDetailPage} options={({
+                route}) => ({title: route.params.person.name.first})} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const options = {
+    headerStyle: {
+        backgroundColor: "#808080",
+        borderBottomWidth: 1,
+        borderBottomColor: "#FFF"
+    },
+    headerTitleStyle: {
+        fontSize: 30,
+        color: "#000",
+    },
+    headerTintColor: "#000",
+    headerTitleAlign: "center",
+
+}
